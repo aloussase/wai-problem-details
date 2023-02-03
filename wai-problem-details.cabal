@@ -1,0 +1,51 @@
+cabal-version:      2.4
+name:               wai-problem-details
+version:            0.1.0.0
+synopsis:           Problem details middleware for WAI
+homepage:           https://github.com/aloussase/wai-problem-details
+bug-reports:        https://github.com/aloussase/wai-problem-details/issues
+license:            MIT
+license-file:       LICENSE
+author:             Alexander Goussas
+maintainer:         goussasalexander@gmail.com
+copyright:          Alexander Goussas 2023
+category:           Web
+extra-source-files: CHANGELOG.md
+
+library
+    exposed-modules:  Network.Wai.Middleware.ProblemDetails
+    other-modules:    Network.Wai.Middleware.ProblemDetails.Internal.Types
+                    , Network.Wai.Middleware.ProblemDetails.Internal.Defaults
+                    , Network.Wai.Middleware.ProblemDetails.Internal.Exception
+    build-depends:    base ^>=4.16.4.0
+                    , text
+                    , wai
+                    , aeson
+                    , deriving-aeson
+                    , network-uri
+                    , data-default
+                    , http-types
+                    , bytestring
+    hs-source-dirs:   src
+    default-language: Haskell2010
+    default-extensions:   OverloadedStrings
+                        , DeriveGeneric
+                        , DeriveAnyClass
+                        , DerivingStrategies
+                        , DerivingVia
+                        , DataKinds
+                        , ScopedTypeVariables
+
+test-suite wai-problem-details-test
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Spec.hs
+    build-depends:    base ^>=4.16.4.0
+                    , wai-problem-details
+                    , http-types
+                    , wai
+                    , hspec
+                    , hspec-wai
+                    , data-default
+                    , hspec-wai-json
