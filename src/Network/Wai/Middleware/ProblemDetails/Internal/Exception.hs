@@ -16,10 +16,8 @@ newtype ProblemDetailsException = ProblemDetailsException ProblemDetails
   deriving stock Show
   deriving anyclass Exception
 
--- | 'throwProblemDetails'
 throwProblemDetails :: ProblemDetails -> a
 throwProblemDetails = throw . ProblemDetailsException
 
--- | 'throwProblemDetailsIO'
 throwProblemDetailsIO :: ProblemDetails -> IO a
 throwProblemDetailsIO = throwIO . ProblemDetailsException
